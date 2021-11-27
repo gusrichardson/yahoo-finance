@@ -66,9 +66,9 @@ function App() {
     }
   };
 
-  const showMore = (item) => {
-    console.log(item);
-  };
+  // const showMore = (item) => {
+  //   console.log(item);
+  // };
 
   return (
     <div className="App">
@@ -83,11 +83,7 @@ function App() {
             />
           </div>
           <div className="col-sm">
-            <WatchList
-              watchList={watchList}
-              handleRemove={handleRemove}
-              showMore={showMore}
-            />
+            <WatchList watchList={watchList} handleRemove={handleRemove} />
           </div>
         </div>
       </div>

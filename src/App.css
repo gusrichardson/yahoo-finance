@@ -1,19 +1,30 @@
 @font-face {
-  font-family: "mathlete";
-  src: url("./fonts/Mathlete-Bulky-webfont.woff") format("woff");
+  font-family: "actionman-shaded";
+  src: url("./fonts/Action_Man_Shaded-webfont.woff") format("woff");
   font-weight: normal;
-  font-style: normal;
 }
 
 @font-face {
-  font-family: "mathlete";
-  src: url("./fonts/Mathlete-BulkySlant-webfont.woff") format("woff");
+  font-family: "actionman";
+  src: url("./fonts/Action_Man-webfont.woff") format("woff");
   font-weight: normal;
-  font-style: italic;
+}
+
+@font-face {
+  font-family: "clearsans";
+  src: url("./fonts/ClearSans-Regular-webfont.woff") format("woff");
+  font-weight: normal;
 }
 
 .header {
   text-align: center;
+}
+
+p,
+a,
+li,
+button {
+  font-family: clearsans;
 }
 
 h1,
@@ -26,10 +37,12 @@ li {
   padding: 0;
 }
 
-h1,
-h2 {
-  font-family: mathlete;
-  letter-spacing: 3px;
+h1 {
+  font-family: actionman-shaded;
+}
+h2,
+h3 {
+  font-family: actionman;
 }
 
 h1 {
