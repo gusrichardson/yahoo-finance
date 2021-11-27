@@ -1,14 +1,15 @@
 import React from "react";
-import { InputGroup, FormControl, Form } from "react-bootstrap";
+import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
 
 function SearchForm({ handleInput, handleRegion, handleSubmit }) {
   return (
-    <form
-      id="stock-form"
+    <Form
+      className="border rounded"
       onSubmit={(e) => {
         handleSubmit(e);
       }}
     >
+      <h2>Stock Search</h2>
       <Form.Label htmlFor="stock-ticker">Enter stock ticker</Form.Label>
       <InputGroup className="mb-3">
         <InputGroup.Text id="stock-addon">Name</InputGroup.Text>
@@ -31,8 +32,11 @@ function SearchForm({ handleInput, handleRegion, handleSubmit }) {
           onChange={(e) => handleRegion(e.target.value)}
         />
       </InputGroup>
-      <input type="submit" value="Submit" />
-    </form>
+      <Button type="submit" variant="primary">
+        Submit
+      </Button>
+      {/* <input type="submit" value="Submit" /> */}
+    </Form>
   );
 }
 

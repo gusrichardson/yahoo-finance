@@ -1,16 +1,22 @@
-import Stock from './Stock';
+import Stock from "./Stock";
 
-function Results({ stocks }) {
-    return (
-        <div id="results">
-            <h3>Results</h3>
-            {
-                stocks.map(stock => {
-                     return <Stock key={stock.quotes[0].score} quotes={stock.quotes} news={stock.news} />
-                })
-            }
-        </div>
-    )
+function Results({ stocks, addToWatchList }) {
+  return (
+    <div id="results">
+      <h3>Results</h3>
+      {stocks.map((stock) => {
+        return (
+          <Stock
+            key={stock.quotes[0].score}
+            stock={stock}
+            // quotes={stock.quotes}
+            // news={stock.news}
+            addToWatchList={addToWatchList}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
-export default Results
+export default Results;

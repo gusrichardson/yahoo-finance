@@ -3,12 +3,14 @@ import axios from "axios";
 import "./App.css";
 import Header from "./components/Header";
 import SearchForm from "./components/SearchForm";
+import WatchList from "./components/WatchList";
 import Results from "./components/Results";
 
 function App() {
   let [stock, setStock] = useState([]);
   let [ticker, setTicker] = useState("");
   let [region, setRegion] = useState("");
+  let [watchList, setWatchList] = useState([]);
 
   const options = {
     method: "GET",
@@ -40,7 +42,7 @@ function App() {
       .request(options)
       .then((res) => {
         console.log(res.data);
-        let stocksArr = [...stock, res.data];
+        let stocksArr = [res.data];
         setStock(stocksArr);
       })
       .catch((err) => {
@@ -48,16 +50,49 @@ function App() {
       });
   };
 
+  const handleRemove = (score) => {
+    let wl = watchList;
+    let newWatchList = wl.filter((item) => item.quotes[0].score !== score);
+    setWatchList(newWatchList);
+  };
+
+  const addToWatchList = (stock) => {
+    if (
+      watchList.some((item) => item.quotes[0].score === stock.quotes[0].score)
+    ) {
+      alert("You're already watching this!");
+    } else {
+      setWatchList([...watchList, stock]);
+    }
+  };
+
+  const showMore = (item) => {
+    console.log(item);
+  };
+
   return (
     <div className="App">
       <Header title="Yahoo Finance App" />
-      <SearchForm
-        handleInput={handleInput}
-        handleRegion={handleRegion}
-        handleSubmit={handleSubmit}
-      />
+      <div className="container">
+        <div className="row">
+          <div className="col-sm">
+            <SearchForm
+              handleInput={handleInput}
+              handleRegion={handleRegion}
+              handleSubmit={handleSubmit}
+            />
+          </div>
+          <div className="col-sm">
+            <WatchList
+              watchList={watchList}
+              handleRemove={handleRemove}
+              showMore={showMore}
+            />
+          </div>
+        </div>
+      </div>
       {stock.length > 0 ? (
-        <Results stocks={stock} />
+        <Results stocks={stock} addToWatchList={addToWatchList} />
       ) : (
         <p>Enter a stock and a region in the form above</p>
       )}
