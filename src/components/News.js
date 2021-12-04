@@ -2,7 +2,7 @@ function News({ pub, story, link }) {
   return (
     <div className="news-item">
       <a href={link}>
-        <h3>{pub}</h3>
+        <h4>{pub}</h4>
         <p>{story}</p>
       </a>
     </div>

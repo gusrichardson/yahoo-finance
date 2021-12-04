@@ -6,12 +6,9 @@ function Stock({ stock, addToWatchList }) {
   const ticker = stock.quotes[0].symbol;
   const exchange = stock.quotes[0].exchange;
   const news = stock.news;
-  // let name = quotes[0].shortname;
-  // let ticker = quotes[0].symbol;
-  // let exchange = quotes[0].exchange;
   return (
-    <div className="stock-container">
-      <h2>{name}</h2>
+    <div id="stock-container" className="mt-2 p-4">
+      <h3>{name}</h3>
       <p>
         {exchange}: ${ticker}
       </p>

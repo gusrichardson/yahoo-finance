@@ -4,7 +4,8 @@ import { InputGroup, FormControl, Form, Button } from "react-bootstrap";
 function SearchForm({ handleInput, handleRegion, handleSubmit }) {
   return (
     <Form
-      className="border rounded"
+      className="border rounded mt-4 bg-white p-4"
+      id="search-form"
       onSubmit={(e) => {
         handleSubmit(e);
       }}

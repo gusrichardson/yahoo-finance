@@ -16,14 +16,11 @@
   font-weight: normal;
 }
 
-.header {
-  text-align: center;
-}
-
 p,
 a,
 li,
-button {
+button,
+label {
   font-family: clearsans;
 }
 
@@ -37,60 +34,81 @@ li {
   padding: 0;
 }
 
-h1 {
-  font-family: actionman-shaded;
-}
-h2,
-h3 {
-  font-family: actionman;
+h2 {
+  /* font-family: actionman-shaded; */
+  font-family: clearsans;
+  color: #f92c85;
 }
 
 h1 {
-  font-size: 4rem;
+  font-family: clearsans;
+}
+
+h3,
+h4 {
+  font-family: clearsans;
+  /* font-family: actionman; */
+}
+
+h1 {
+  font-size: 4.5rem;
+  color: #f92c85;
 }
 
 .App {
+  background-color: #fdf5df;
+  padding: 20px 0;
+  min-height: 100vh;
+}
+
+.wrapper {
   width: 80%;
-  margin: 20px auto;
-  border: 2px solid cornflowerblue;
-  padding-top: 20px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+#search-form {
+  /* border: 2px solid #f92c85 !important; */
+  border: 4px solid #5ebec4 !important;
+  background-color: #fdf5df !important;
+}
+#watch-list {
+  /* border: 2px solid #f92c85 !important; */
+  border: 4px solid #5ebec4 !important;
+  background-color: #fdf5df;
 }
 
 #stock-form {
   padding: 25px 0;
-  /* margin: 0 auto; */
   border: 4px solid grey;
   width: 310px;
   margin: 20px auto;
   border-radius: 5px;
 }
 
-/* #stock-form label,
-#stock-form input {
-  width: 240px;
-  margin: 0 auto;
-  display: block;
+#stock-ticker,
+#region,
+.watchlist-container {
+  background-color: #f1f1f1;
+  border: 1px solid black;
 }
 
-#stock-form label {
-  padding: 6px 0;
+#region-addon,
+#stock-addon {
+  border: 1px solid black;
 }
 
-#stock-form input:first-of-type {
-  margin-bottom: 6px;
+#region:focus,
+#region:active,
+#stock-ticker:focus,
+#stock-ticker:active {
+  background-color: white;
 }
 
-#stock-form input[type="submit"] {
-  margin-top: 16px;
-  padding: 4px;
-  width: 250px;
-} */
-
-.stock-container {
-  border: 1px solid grey;
+#stock-container {
   border-radius: 5px;
-  margin: 20px;
-  padding: 20px;
+  background-color: #fdf5df;
+  border: 4px solid #5ebec4 !important;
 }
 
 .news-item {
@@ -98,6 +116,7 @@ h1 {
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
+  background: #f1f1f1;
 }
 
 a {

@@ -11,6 +11,7 @@ function App() {
   let [ticker, setTicker] = useState("");
   let [region, setRegion] = useState("");
   let [watchList, setWatchList] = useState([]);
+  let [showNoResults, setShowNoResults] = useState(false);
 
   const options = {
     method: "GET",
@@ -37,16 +38,23 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setStock([]);
+    setShowNoResults(false);
     console.log("OPTIONS", options);
     axios
       .request(options)
       .then((res) => {
+        console.log("RES", res);
         console.log(res.data);
         let stocksArr = [res.data];
-        setStock(stocksArr);
+        if (res.status === 200 && res.data.count > 0) {
+          setStock(stocksArr);
+        } else if (res.status === 200 && res.data.count < 1) {
+          setShowNoResults(true);
+        }
       })
       .catch((err) => {
-        console.error(err);
+        console.error("ERROR MESSAGE FOR GUS: ", err);
       });
   };
 
@@ -66,32 +74,31 @@ function App() {
     }
   };
 
-  // const showMore = (item) => {
-  //   console.log(item);
-  // };
-
   return (
     <div className="App">
-      <Header title="Yahoo Finance App" />
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <SearchForm
-              handleInput={handleInput}
-              handleRegion={handleRegion}
-              handleSubmit={handleSubmit}
-            />
+      <div className="wrapper rounded p-4">
+        <Header title="Yahoo Finance App" />
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
+              <SearchForm
+                handleInput={handleInput}
+                handleRegion={handleRegion}
+                handleSubmit={handleSubmit}
+              />
+            </div>
+            <div className="col-sm">
+              <WatchList watchList={watchList} handleRemove={handleRemove} />
+            </div>
           </div>
-          <div className="col-sm">
-            <WatchList watchList={watchList} handleRemove={handleRemove} />
-          </div>
+          {showNoResults && <p>Sorry, this search returned no results</p>}
         </div>
+        {stock.length > 0 ? (
+          <Results stocks={stock} addToWatchList={addToWatchList} />
+        ) : (
+          ""
+        )}
       </div>
-      {stock.length > 0 ? (
-        <Results stocks={stock} addToWatchList={addToWatchList} />
-      ) : (
-        <p>Enter a stock and a region in the form above</p>
-      )}
     </div>
   );
 }
